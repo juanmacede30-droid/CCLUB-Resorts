@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Claudie | CCLUB Resorts</title>
+<style>
+:root{--ink:#10282d;--gold:#b77a27;--cream:#f5efe4;--paper:#fffdf9}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:var(--ink);background:var(--paper)}
+header{padding:18px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e4ddd2}
+header a{color:inherit;text-decoration:none}.brand{letter-spacing:.18em;font-weight:bold}
+.hero{max-width:1200px;margin:32px auto;padding:0 22px}.hero img{width:100%;height:min(65vh,680px);object-fit:cover;border-radius:18px}
+.grid{max-width:1200px;margin:0 auto 60px;padding:0 22px;display:grid;grid-template-columns:1.6fr .8fr;gap:38px}
+.kicker{color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:12px}h1{font-size:48px;margin:8px 0 12px}
+.lead{font-size:20px;line-height:1.65}.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0}
+.feature{padding:14px;border:1px solid #e3d9ca;border-radius:12px;background:var(--cream)}
+.card{position:sticky;top:20px;padding:24px;border:1px solid #ded4c5;border-radius:16px;box-shadow:0 10px 35px #0000000e;height:max-content}
+label{display:block;margin:13px 0 6px}input,select{width:100%;padding:12px;border:1px solid #cfc5b7;border-radius:8px;background:white}
+.addon{display:flex;gap:10px;align-items:flex-start;margin:20px 0;padding:14px;background:var(--cream);border-radius:12px}.addon input{width:auto;margin-top:4px}
+.condom-icon{width:28px;height:28px;border:1.5px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+button{width:100%;border:0;border-radius:9px;padding:14px;background:var(--ink);color:white;font-weight:bold;cursor:pointer}
+.note{font:13px Arial,sans-serif;color:#667;line-height:1.4}.price{font-size:24px;margin-bottom:10px}
+.gallery-note{font:14px Arial,sans-serif;color:#777;margin-top:8px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:38px}.card{position:static}.features{grid-template-columns:1fr}}
+
+.gallery{max-width:1200px;margin:32px auto;padding:0 22px}
+.gallery-main{width:100%;height:min(68vh,720px);object-fit:cover;border-radius:18px;display:block}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px}
+.thumbs button{padding:0;background:none;border:0;cursor:pointer}
+.thumbs img{width:100%;height:95px;object-fit:cover;border-radius:10px;opacity:.72;border:2px solid transparent}
+.thumbs img.active{opacity:1;border-color:#b77a27}
+.gallery-controls{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.gallery-controls button{width:auto;padding:10px 18px}
+@media(max-width:800px){.thumbs{grid-template-columns:repeat(3,1fr)}.thumbs img{height:78px}}
+
+
+/* Fotografías completas: se conserva el formato/proporción original */
+.gallery-main{
+  width:100% !important;
+  height:auto !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  border-radius:18px;
+  display:block;
+  background:#eee8dd;
+}
+.thumbs img{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  border-radius:10px;
+  background:#eee8dd;
+}
+
+</style>
+</head>
+<body>
+<header><a class="brand" href="index.html">CCLUB RESORTS</a><a href="index.html">← Todas las habitaciones</a></header>
+
+<section class="gallery">
+<img id="mainPhoto" class="gallery-main" src="la-claudie-1.jpeg" alt="La Claudie, fotografía 1">
+<div class="gallery-controls"><button type="button" onclick="movePhoto(-1)">← Anterior</button><span id="photoCount">1 / 7</span><button type="button" onclick="movePhoto(1)">Siguiente →</button></div>
+<div class="thumbs"><button type="button" onclick="showPhoto(0)"><img src="la-claudie-1.jpeg" alt="La Claudie, fotografía 1" class="active"></button><button type="button" onclick="showPhoto(1)"><img src="la-claudie-2.jpeg" alt="La Claudie, fotografía 2" class=""></button><button type="button" onclick="showPhoto(2)"><img src="la-claudie-3.jpeg" alt="La Claudie, fotografía 3" class=""></button><button type="button" onclick="showPhoto(3)"><img src="la-claudie-4.jpeg" alt="La Claudie, fotografía 4" class=""></button><button type="button" onclick="showPhoto(4)"><img src="la-claudie-5.jpeg" alt="La Claudie, fotografía 5" class=""></button><button type="button" onclick="showPhoto(5)"><img src="la-claudie-6.jpeg" alt="La Claudie, fotografía 6" class=""></button><button type="button" onclick="showPhoto(6)"><img src="la-claudie-7.jpeg" alt="La Claudie, fotografía 7" class=""></button></div>
+</section>
+
+<main class="grid">
+<section>
+<div class="kicker">Signature Suite</div>
+<h1>La Claudie</h1>
+<p class="lead">Una estancia de carácter contemporáneo, concebida alrededor de una amplia cama king que, según CCLUB Resorts, es <strong>la más cómoda de todo el resort</strong>. La suite combina acabados cálidos, mobiliario oscuro y una generosa entrada de luz natural a través de sus puertas acristaladas, con vistas a la vegetación exterior.</p>
+<p class="lead">Su atmósfera se transforma por la noche gracias a <strong>luces LED azules</strong>, que aportan un acento moderno y envolvente. La estancia incluye además <strong>ducha</strong>, completando una experiencia pensada para descansar con privacidad y comodidad.</p>
+<div class="features">
+<div class="feature"><strong>Cama king</strong><br>La más cómoda del resort.</div>
+<div class="feature"><strong>Iluminación LED</strong><br>Luces ambientales azules.</div>
+<div class="feature"><strong>Ducha</strong><br>Incluida con la habitación.</div>
+<div class="feature"><strong>Luz natural</strong><br>Amplias puertas acristaladas y vista verde.</div>
+</div>
+</section>
+<aside class="card">
+<div class="price">Reserva La Claudie</div>
+<label>Entrada</label><input id="in" type="date">
+<label>Salida</label><input id="out" type="date">
+<label>Huéspedes</label><select id="guests"><option>1 huésped</option><option>2 huéspedes</option></select>
+<div class="addon">
+<input id="kit" type="checkbox" onchange="updateTotal()">
+<span class="condom-icon" aria-hidden="true">◯</span>
+<label for="kit" style="margin:0;cursor:pointer"><strong>Selección de preservativos y lubricante</strong><br><span class="note">Opcional · +$2,00</span></label>
+</div>
+<div style="display:flex;justify-content:space-between;margin:15px 0"><span>Servicio adicional</span><strong id="fee">$0,00</strong></div>
+<button onclick="reserve()">Confirmar reserva</button>
+<p class="note">La selección es opcional. Si la marcas, se añaden $2,00 al total de la reserva.</p>
+</aside>
+</main>
+<script>
+function updateTotal(){document.getElementById('fee').textContent=document.getElementById('kit').checked?'$2,00':'$0,00'}
+function reserve(){
+ const a=document.getElementById('in').value,b=document.getElementById('out').value;
+ if(!a||!b){alert('Selecciona las fechas de entrada y salida.');return}
+ const extra=document.getElementById('kit').checked?2:0;
+ const booking={room:'La Claudie',checkIn:a,checkOut:b,guests:document.getElementById('guests').value,optionalKit:extra===2,addonFee:extra};
+ const old=JSON.parse(localStorage.getItem('cclubBookings')||'[]');old.push(booking);localStorage.setItem('cclubBookings',JSON.stringify(old));
+ alert('Reserva confirmada en CCLUB Resorts.'+(extra?' Se añadieron $2,00 por la selección opcional.':''));
+}
+</script>
+
+<script>
+const suiteJonesPhotos = ['la-claudie-1.jpeg','la-claudie-2.jpeg','la-claudie-3.jpeg','la-claudie-4.jpeg','la-claudie-5.jpeg','la-claudie-6.jpeg','la-claudie-7.jpeg'];
+let suiteJonesPhotoIndex = 0;
+function showPhoto(i){
+  suiteJonesPhotoIndex = (i + suiteJonesPhotos.length) % suiteJonesPhotos.length;
+  document.getElementById('mainPhoto').src = suiteJonesPhotos[suiteJonesPhotoIndex];
+  document.getElementById('photoCount').textContent = (suiteJonesPhotoIndex+1) + ' / ' + suiteJonesPhotos.length;
+  document.querySelectorAll('.thumbs img').forEach((img,j)=>img.classList.toggle('active',j===suiteJonesPhotoIndex));
+}
+function movePhoto(step){ showPhoto(suiteJonesPhotoIndex + step); }
+</script>
+
+</body></html>
