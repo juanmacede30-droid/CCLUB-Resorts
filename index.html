@@ -18,7 +18,7 @@ footer{text-align:center;padding:35px;font-size:13px}.modal{display:none;positio
 <header class="hero"><div><div class="eyebrow" style="color:#eee">Un resort pas comme les autres</div><h1>CCLUB Resorts</h1><p>Hospitalidad exclusiva. Experiencia inolvidable.</p><button onclick="document.querySelector('.rooms').scrollIntoView({behavior:'smooth'})">Descubrir las habitaciones</button></div></header>
 <section class="intro"><div class="eyebrow">Bienvenue</div><h2>El lujo de sentirte como en casa.<br>Literalmente.</h2><p>Un exclusivo resort donde cada habitación ha sido cuidadosamente seleccionada por la administración (Jones). Servicio personalizado, ubicación confidencial y estándares de hospitalidad sospechosamente altos.</p></section>
 <section class="rooms"><div class="eyebrow">Nos chambres</div><h2>Elige tu estancia</h2><div class="grid">
-<div class="card"><img src="suite-jones.jpeg"><div class="pad"><h3>Suite Jones</h3><p>Elegancia, tranquilidad y derecho preferencial al Wi‑Fi.</p><span class="price">$0.00 / noche*</span><a href="suite-jones.html" class="btn" style="display:inline-block;text-decoration:none;text-align:center;">Ver Suite Jones</a></div></div>
+<div class="card"><img src="suite-jones.jpeg"><div class="pad"><h3>Suite Jones</h3><p>Elegancia, tranquilidad y derecho preferencial al Wi‑Fi.</p><span class="price">$0.00 / noche*</span><a href="./suite-jones.html" class="btn" style="display:inline-block;text-decoration:none;text-align:center;">Ver habitación y reservar</a></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=80"><div class="pad"><h3>Suite Alexandre</h3><p>Para huéspedes distinguidos que probablemente llegaron sin avisar.</p><span class="price">$0.00 / noche*</span><button class="book" onclick="openBook('Suite Alexandre')">Réserver</button></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80"><div class="pad"><h3>Chambre Présidentielle</h3><p>La máxima categoría. Incluye una almohada adicional, sujeta a disponibilidad.</p><span class="price">$0.00 / noche*</span><button class="book" onclick="openBook('Chambre Présidentielle')">Réserver</button></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"><div class="pad"><h3>Le Canapé Royal</h3><p>Concepto abierto, acceso inmediato a áreas comunes y cero privacidad.</p><span class="price">$0.00 / noche*</span><button class="book" onclick="openBook('Le Canapé Royal')">Réserver</button></div></div>
@@ -39,6 +39,27 @@ function updateAddonTotal(){
   document.querySelectorAll('[data-addon-fee]').forEach(el => el.textContent = checked ? '$2,00' : '$0,00');
 }
 window.cclubOptionalAddonFee = function(){ return document.getElementById('intimacyKit')?.checked ? 2 : 0; };
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const roomTitle = Array.from(document.querySelectorAll('h2,h3,h4')).find(el => el.textContent.trim() === 'Suite Jones');
+  if (!roomTitle) return;
+  const card = roomTitle.closest('article, .room-card, .card, .room') || roomTitle.parentElement.parentElement;
+  if (!card) return;
+  card.querySelectorAll('button,a').forEach(el => {
+    if (/reserv|réserv|ver habitación|ver suite/i.test(el.textContent)) {
+      el.onclick = function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        window.location.href = './suite-jones.html';
+        return false;
+      };
+      if (el.tagName === 'A') el.setAttribute('href','./suite-jones.html');
+    }
+  });
+}, true);
 </script>
 
 </body></html>
