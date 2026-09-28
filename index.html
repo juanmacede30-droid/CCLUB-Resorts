@@ -32,4 +32,13 @@ function closeBook(){document.getElementById('modal').style.display='none';docum
 function confirmBook(){let n=document.getElementById('name').value.trim()||'Estimado huésped';let r=document.getElementById('room').value;let a=document.getElementById('in').value;let b=document.getElementById('out').value;if(!a||!b){alert('Selecciona las fechas de tu estancia.');return}let booking={name:n,room:r,arrival:a,departure:b,guests:document.getElementById('guests').value,created:new Date().toISOString()};let all=JSON.parse(localStorage.getItem('cclubBookings')||'[]');all.push(booking);localStorage.setItem('cclubBookings',JSON.stringify(all));document.getElementById('form').style.display='none';document.getElementById('confirm').style.display='block';document.getElementById('msg').textContent=`${n}, tu estancia en ${r} del ${a} al ${b} ha sido registrada. Presenta esta pantalla al maître d'hôtel (o al dueño de la casa).`}
 window.onclick=e=>{if(e.target===document.getElementById('modal'))closeBook()}
 </script>
+
+<script>
+function updateAddonTotal(){
+  const checked = document.getElementById('intimacyKit')?.checked || false;
+  document.querySelectorAll('[data-addon-fee]').forEach(el => el.textContent = checked ? '$2,00' : '$0,00');
+}
+window.cclubOptionalAddonFee = function(){ return document.getElementById('intimacyKit')?.checked ? 2 : 0; };
+</script>
+
 </body></html>
