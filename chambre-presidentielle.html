@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Suite Jones | CCLUB Resorts</title>
+<title>Chambre Présidentielle | CCLUB Resorts</title>
 <style>
 :root{--ink:#10282d;--gold:#b77a27;--cream:#f5efe4;--paper:#fffdf9}
 *{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:var(--ink);background:var(--paper)}
@@ -37,22 +37,12 @@ button{width:100%;border:0;border-radius:9px;padding:14px;background:var(--ink);
 <body>
 <header><a class="brand" href="index.html">CCLUB RESORTS</a><a href="index.html">← Todas las habitaciones</a></header>
 
-<section class="gallery">
-  <img id="mainPhoto" class="gallery-main" src="suite-jones-1.jpeg" alt="Suite Jones, fotografía 1">
-  <div class="gallery-controls">
-    <button type="button" onclick="movePhoto(-1)">← Anterior</button>
-    <span id="photoCount">1 / 6</span>
-    <button type="button" onclick="movePhoto(1)">Siguiente →</button>
-  </div>
-  <div class="thumbs">
-    <button type="button" onclick="showPhoto(0)"><img src="suite-jones-1.jpeg" alt="Suite Jones, fotografía 1" class="active"></button><button type="button" onclick="showPhoto(1)"><img src="suite-jones-2.jpeg" alt="Suite Jones, fotografía 2" class=""></button><button type="button" onclick="showPhoto(2)"><img src="suite-jones-3.jpeg" alt="Suite Jones, fotografía 3" class=""></button><button type="button" onclick="showPhoto(3)"><img src="suite-jones-4.jpeg" alt="Suite Jones, fotografía 4" class=""></button><button type="button" onclick="showPhoto(4)"><img src="suite-jones-5.jpeg" alt="Suite Jones, fotografía 5" class=""></button><button type="button" onclick="showPhoto(5)"><img src="suite-jones-6.jpeg" alt="Suite Jones, fotografía 6" class=""></button>
-  </div>
-</section>
+<section class="gallery"><div style="min-height:360px;border:1px dashed #cfc5b7;border-radius:18px;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;background:#f5efe4"><div><div class="kicker">Galería de Chambre Présidentielle</div><h2>Fotos próximamente</h2><p>Esta página está preparada para recibir las fotografías y detalles de esta habitación.</p></div></div></section>
 
 <main class="grid">
 <section>
 <div class="kicker">Signature Suite</div>
-<h1>Suite Jones</h1>
+<h1>Chambre Présidentielle</h1>
 <p class="lead">Una estancia de carácter contemporáneo, concebida alrededor de una amplia cama king que, según CCLUB Resorts, es <strong>la más cómoda de todo el resort</strong>. La suite combina acabados cálidos, mobiliario oscuro y una generosa entrada de luz natural a través de sus puertas acristaladas, con vistas a la vegetación exterior.</p>
 <p class="lead">Su atmósfera se transforma por la noche gracias a <strong>luces LED azules</strong>, que aportan un acento moderno y envolvente. La estancia incluye además <strong>ducha</strong>, completando una experiencia pensada para descansar con privacidad y comodidad.</p>
 <div class="features">
@@ -63,7 +53,7 @@ button{width:100%;border:0;border-radius:9px;padding:14px;background:var(--ink);
 </div>
 </section>
 <aside class="card">
-<div class="price">Reserva Suite Jones</div>
+<div class="price">Reserva Chambre Présidentielle</div>
 <label>Entrada</label><input id="in" type="date">
 <label>Salida</label><input id="out" type="date">
 <label>Huéspedes</label><select id="guests"><option>1 huésped</option><option>2 huéspedes</option></select>
@@ -83,22 +73,10 @@ function reserve(){
  const a=document.getElementById('in').value,b=document.getElementById('out').value;
  if(!a||!b){alert('Selecciona las fechas de entrada y salida.');return}
  const extra=document.getElementById('kit').checked?2:0;
- const booking={room:'Suite Jones',checkIn:a,checkOut:b,guests:document.getElementById('guests').value,optionalKit:extra===2,addonFee:extra};
+ const booking={room:'Chambre Présidentielle',checkIn:a,checkOut:b,guests:document.getElementById('guests').value,optionalKit:extra===2,addonFee:extra};
  const old=JSON.parse(localStorage.getItem('cclubBookings')||'[]');old.push(booking);localStorage.setItem('cclubBookings',JSON.stringify(old));
  alert('Reserva confirmada en CCLUB Resorts.'+(extra?' Se añadieron $2,00 por la selección opcional.':''));
 }
-</script>
-
-<script>
-const suiteJonesPhotos = ['suite-jones-1.jpeg', 'suite-jones-2.jpeg', 'suite-jones-3.jpeg', 'suite-jones-4.jpeg', 'suite-jones-5.jpeg', 'suite-jones-6.jpeg'];
-let suiteJonesPhotoIndex = 0;
-function showPhoto(i){
-  suiteJonesPhotoIndex = (i + suiteJonesPhotos.length) % suiteJonesPhotos.length;
-  document.getElementById('mainPhoto').src = suiteJonesPhotos[suiteJonesPhotoIndex];
-  document.getElementById('photoCount').textContent = (suiteJonesPhotoIndex+1) + ' / ' + suiteJonesPhotos.length;
-  document.querySelectorAll('.thumbs img').forEach((img,j)=>img.classList.toggle('active',j===suiteJonesPhotoIndex));
-}
-function movePhoto(step){ showPhoto(suiteJonesPhotoIndex + step); }
 </script>
 
 </body></html>
