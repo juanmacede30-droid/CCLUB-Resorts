@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>La Claudie | CCLUB Resorts</title>
+<title>La Claudie | CCLUB RESORTS</title>
 <style>
 :root{--ink:#10282d;--gold:#b77a27;--cream:#f5efe4;--paper:#fffdf9}
 *{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:var(--ink);background:var(--paper)}
@@ -84,22 +84,22 @@ button{width:100%;border:0;border-radius:9px;padding:14px;background:var(--ink);
 <div class="addon">
 <input id="kit" type="checkbox" onchange="updateTotal()">
 <span class="condom-icon" aria-hidden="true">◯</span>
-<label for="kit" style="margin:0;cursor:pointer"><strong>Selección de preservativos y lubricante</strong><br><span class="note">Opcional · +$2,00</span></label>
+<label for="kit" style="margin:0;cursor:pointer"><strong>Selección de preservativos y lubricante</strong><br><span class="note">Opcional · +$5.00,00</span></label>
 </div>
 <div style="display:flex;justify-content:space-between;margin:15px 0"><span>Servicio adicional</span><strong id="fee">$0,00</strong></div>
 <button onclick="reserve()">Confirmar reserva</button>
-<p class="note">La selección es opcional. Si la marcas, se añaden $2,00 al total de la reserva.</p>
+<p class="note">La selección es opcional. Si la marcas, se añaden $5.00,00 al total de la reserva.</p>
 </aside>
 </main>
 <script>
-function updateTotal(){document.getElementById('fee').textContent=document.getElementById('kit').checked?'$2,00':'$0,00'}
+function updateTotal(){document.getElementById('fee').textContent=document.getElementById('kit').checked?'$5.00,00':'$0,00'}
 function reserve(){
  const a=document.getElementById('in').value,b=document.getElementById('out').value;
  if(!a||!b){alert('Selecciona las fechas de entrada y salida.');return}
- const extra=document.getElementById('kit').checked?2:0;
+ const extra=document.getElementById('kit').checked?5:0;
  const booking={room:'La Claudie',checkIn:a,checkOut:b,guests:document.getElementById('guests').value,optionalKit:extra===2,addonFee:extra};
  const old=JSON.parse(localStorage.getItem('cclubBookings')||'[]');old.push(booking);localStorage.setItem('cclubBookings',JSON.stringify(old));
- alert('Reserva confirmada en CCLUB Resorts.'+(extra?' Se añadieron $2,00 por la selección opcional.':''));
+ alert('Reserva confirmada en CCLUB RESORTS.'+(extra?' Se añadieron $5.00,00 por la selección opcional.':''));
 }
 </script>
 
