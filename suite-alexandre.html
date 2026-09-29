@@ -32,6 +32,12 @@ button{width:100%;border:0;border-radius:9px;padding:14px;background:var(--ink);
 .gallery-controls button{width:auto;padding:10px 18px}
 @media(max-width:800px){.thumbs{grid-template-columns:repeat(3,1fr)}.thumbs img{height:78px}}
 
+
+.extra-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink);position:relative}
+.hazelnut-icon:before{content:'';width:14px;height:17px;border:1.5px solid currentColor;border-radius:55% 55% 48% 48%;transform:rotate(-18deg)}
+.hazelnut-icon:after{content:'';position:absolute;width:9px;height:5px;border:1.5px solid currentColor;border-bottom:0;border-radius:9px 9px 0 0;top:3px;left:9px;transform:rotate(-18deg)}
+.cream-icon:before{content:'';width:18px;height:13px;border:1.5px solid currentColor;border-radius:50% 50% 45% 45%;clip-path:polygon(0 35%,25% 15%,43% 32%,60% 5%,78% 32%,100% 22%,92% 100%,8% 100%)}
+
 </style>
 </head>
 <body>
@@ -60,22 +66,38 @@ button{width:100%;border:0;border-radius:9px;padding:14px;background:var(--ink);
 <div class="addon">
 <input id="kit" type="checkbox" onchange="updateTotal()">
 <span class="condom-icon" aria-hidden="true">◯</span>
-<label for="kit" style="margin:0;cursor:pointer"><strong>Selección de preservativos y lubricante</strong><br><span class="note">Opcional · +$5.00,00</span></label>
+<label for="kit" style="margin:0;cursor:pointer"><strong>Selección de preservativos y lubricante</strong><br><span class="note">Opcional · +$5.00</span></label>
 </div>
-<div style="display:flex;justify-content:space-between;margin:15px 0"><span>Servicio adicional</span><strong id="fee">$0,00</strong></div>
+<div class="addon">
+<input id="nutella" type="checkbox" onchange="updateTotal()">
+<span class="extra-icon hazelnut-icon" aria-hidden="true"></span>
+<label for="nutella" style="margin:0;cursor:pointer"><strong>Nutella</strong><br><span class="note">Opcional · +$3.00</span></label>
+</div>
+<div class="addon">
+<input id="chantilly" type="checkbox" onchange="updateTotal()">
+<span class="extra-icon cream-icon" aria-hidden="true"></span>
+<label for="chantilly" style="margin:0;cursor:pointer"><strong>Crema chantilly</strong><br><span class="note">Opcional · +$4.00</span></label>
+</div>
+<div style="display:flex;justify-content:space-between;margin:15px 0"><span>Servicios adicionales</span><strong id="fee">$0.00</strong></div>
 <button onclick="reserve()">Confirmar reserva</button>
-<p class="note">La selección es opcional. Si la marcas, se añaden $5.00,00 al total de la reserva.</p>
+<p class="note">Todos los extras son opcionales y se suman únicamente si los seleccionas.</p>
 </aside>
 </main>
 <script>
-function updateTotal(){document.getElementById('fee').textContent=document.getElementById('kit').checked?'$5.00,00':'$0,00'}
+function selectedExtras(){
+ const kit=document.getElementById('kit').checked;
+ const nutella=document.getElementById('nutella').checked;
+ const chantilly=document.getElementById('chantilly').checked;
+ return {kit,nutella,chantilly,total:(kit?5:0)+(nutella?3:0)+(chantilly?4:0)};
+}
+function updateTotal(){const x=selectedExtras();document.getElementById('fee').textContent='$'+x.total.toFixed(2)}
 function reserve(){
  const a=document.getElementById('in').value,b=document.getElementById('out').value;
  if(!a||!b){alert('Selecciona las fechas de entrada y salida.');return}
- const extra=document.getElementById('kit').checked?5:0;
- const booking={room:'L'Alexandre',checkIn:a,checkOut:b,guests:document.getElementById('guests').value,optionalKit:extra===2,addonFee:extra};
+ const x=selectedExtras();
+ const booking={room:'L\'Alexandre',checkIn:a,checkOut:b,guests:document.getElementById('guests').value,extras:{preservativosYLubricante:x.kit,nutella:x.nutella,cremaChantilly:x.chantilly},addonFee:x.total};
  const old=JSON.parse(localStorage.getItem('cclubBookings')||'[]');old.push(booking);localStorage.setItem('cclubBookings',JSON.stringify(old));
- alert('Reserva confirmada en CCLUB RESORTS.'+(extra?' Se añadieron $5.00,00 por la selección opcional.':''));
+ alert('Reserva confirmada en CCLUB RESORTS.'+(x.total?' Extras seleccionados: $'+x.total.toFixed(2)+'.':''));
 }
 </script>
 
